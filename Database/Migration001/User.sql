@@ -1,0 +1,34 @@
+USE [Salon]
+GO
+
+/****** Object:  Table [dbo].[User]    Script Date: 2015-03-23 22:41:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[User](
+	[IdUser] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](max) NOT NULL,
+	[UserPasswordSHA] [varbinary](20) NOT NULL,
+	[IdPracownik] [int] NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[IdUser] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_IdPracownik] FOREIGN KEY([IdPracownik])
+REFERENCES [dbo].[Pracownik] ([idPracownik])
+GO
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_IdPracownik]
+GO
+SET ANSI_PADDING OFF
+GO
+
+

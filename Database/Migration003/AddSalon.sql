@@ -1,0 +1,1 @@
+EXEC ap_AddSalon @ulica = 'Wojska Polskiego', @nrDomu = 34, @nrLokalu = 2, @miejscowosc = 'Katowice', @kodPocztowy = '41-120', @nazwaSalonu = 'Auto Ganinex', @idSalon = 1

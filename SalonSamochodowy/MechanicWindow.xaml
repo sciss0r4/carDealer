@@ -1,0 +1,28 @@
+﻿<Window x:Class="SalonSamochodowy.MechanicWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MechanicWindow" Height="540" Width="960" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" IsEnabled="False">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Name="ZalogowanyJakoMenu"  Header="Zalogowany jako: Nieznany" HorizontalAlignment="Right"/>
+        </Menu>
+        <Grid DockPanel.Dock="Bottom">
+            <GroupBox Header="Mechanik" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="473" Width="934">
+                <ListBox HorizontalAlignment="Left" Height="435" Margin="10,10,0,0" VerticalAlignment="Top" Width="651" ItemsSource="{Binding Path=MechanicServiceList, UpdateSourceTrigger=PropertyChanged}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Path=ServiceQuery}" Margin="0,1,0,0"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
+            <Button Content="Podgląd zlecenia" HorizontalAlignment="Left" Margin="691,40,0,0" VerticalAlignment="Top" Width="232" Height="32" IsEnabled="False"/>
+            <Button Content="Wykonaj zlecenie" HorizontalAlignment="Left" Margin="691,77,0,0" VerticalAlignment="Top" Width="232" Height="32" IsEnabled="False"/>
+        </Grid>
+    </DockPanel>
+</Window>

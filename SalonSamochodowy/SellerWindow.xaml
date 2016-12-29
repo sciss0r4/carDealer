@@ -1,0 +1,80 @@
+﻿<Window x:Name="Seller_Window" x:Class="SalonSamochodowy.SellerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Seller Window" Height="540" Width="960"
+        xmlns:local="clr-namespace:SalonSamochodowy" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+
+    <DockPanel>
+        <!--Menu DockPanel.Dock="Top" IsEnabled="False">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="Wyloguj" Click="logout_click"/>
+            <MenuItem Name="ZalogowanyJakoMenu"  Header="Zalogowany jako: Nieznany" HorizontalAlignment="Right"/>
+        </-->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Plik">
+                <MenuItem Header="_Nowy" />
+                <Separator/>
+                <MenuItem Header="O _programie" />
+                <Separator/>
+                <MenuItem Header="_Wyloguj" Click="Logout_click"/>
+                <MenuItem Header="_Zamknij" Click="Exit_click"/>
+            </MenuItem>
+            <MenuItem Name="ZalogowanyJakoMenu"  Header="Zalogowany jako: Nieznany" HorizontalAlignment="Right"/>
+        </Menu>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0" Header="Sprzedawca">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="75*"/>
+                            <RowDefinition Height="68*"/>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="75*"/>
+                        </Grid.RowDefinitions>
+                        <Button Name="AddOrderButton" Grid.Row="0" Grid.Column="0" Content="Dodaj zamówienie" Click="Button_Click_1" Margin="0,10,10,0" Grid.ColumnSpan="3" />
+                        <Button Grid.Row="1" Content="Zarządzaj samochodami" Click="Button_Click_2" Margin="0,10,10,0" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+                        <Button Name="AddServiceButton" Content="Dodaj zlecenie serwisowe" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="455" Grid.ColumnSpan="3" Height="55" Click="AddServiceButton_Click"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Header="Zamówienia">
+                    <Grid>
+                        <ListBox Name="OrdersListBox" HorizontalAlignment="Left" Height="180" Margin="10,10,0,0" VerticalAlignment="Top" Width="445" ItemsSource="{Binding Path=ListItems, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding Path=SelectedOrderIndex,UpdateSourceTrigger=PropertyChanged}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Name="CheckBoxZone" Content="{Binding Path=OrderName}" Margin="0,1,0,0"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Button Content="Szczegóły" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Width="445" Command="{Binding OrderDetailsCommand, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+            <GroupBox Grid.Column="1" Header="Klient" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="483" Width="457">
+                <Grid>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="425" Text="{Binding Path=ClientSearchText, UpdateSourceTrigger=PropertyChanged}"/>
+                    <ListBox Name="ClientListBox" HorizontalAlignment="Left" Height="388" Margin="10,38,0,0" VerticalAlignment="Top" Width="425" ItemsSource="{Binding Path=SearchedClients, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding Path=SelectedListBoxIndex, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="ClientListBox_SelectionChanged"/>
+                    <Button Content="Dodaj klienta" HorizontalAlignment="Left" Margin="10,431,0,0" VerticalAlignment="Top" Width="205" Click="Button_Click"/>
+                    <Button Content="Szczegóły..." HorizontalAlignment="Left" Margin="220,431,0,0" VerticalAlignment="Top" Width="215"  Command="{Binding ClientDetailsCommand, UpdateSourceTrigger=PropertyChanged}"/>
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </DockPanel>
+</Window>

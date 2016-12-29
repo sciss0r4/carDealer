@@ -1,0 +1,32 @@
+﻿<Window x:Class="SalonSamochodowy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Salon Samochodowy v 1.0.0" Height="270" Width="480"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding LoginCommand, UpdateSourceTrigger=PropertyChanged}" Key="Enter"/>
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" FontSize="22" FontWeight="Bold">Zaloguj się</Label>
+        <Label Grid.Row="1" FontStyle="Italic" >Aby uruchomić aplikację podaj nazwę użytkownika i hasło</Label>
+        <Label Grid.Row="2" Margin="0,7,0,0">Nazwa użytkownika</Label>
+        <TextBox x:Name="txtBoxUser" Grid.Row="2" Width="200" Height="23" Margin="0,0,0,0" Text="{Binding Path=Login, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Row="3" Margin="0,7,0,0">Hasło</Label>
+        <PasswordBox Name="PassBox" Grid.Row="3" Margin="0,0,0,0" Width="200" Height="23" PasswordChanged="PassBox_PasswordChanged"/>
+        <Button Grid.Row="4" Width="120" Height="23" Margin="0" Command="{Binding LoginCommand, UpdateSourceTrigger=PropertyChanged}">
+            Zaloguj
+        </Button>
+        <TextBox x:Name="txtBox" HorizontalAlignment="Left" Height="23" Margin="344,0,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Database" HorizontalAlignment="Left" Margin="280,37,0,0" Grid.Row="4" VerticalAlignment="Top" RenderTransformOrigin="0.763,0.154" Grid.RowSpan="2"/>
+    </Grid>
+</Window>

@@ -1,0 +1,1 @@
+INSERT INTO dbo.[Stanowisko] VALUES (1, 'Sprzedawca')

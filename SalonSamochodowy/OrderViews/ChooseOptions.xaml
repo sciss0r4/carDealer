@@ -1,0 +1,17 @@
+﻿<Window x:Class="SalonSamochodowy.OrderViews.ChooseOptions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ChooseOptions" Height="386" Width="351" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <ListBox Name="OptionsListBox" HorizontalAlignment="Left" Height="302" Margin="10,10,0,0" VerticalAlignment="Top" Width="323" ItemsSource="{Binding Path=ListItems}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Name="CheckBoxZone" Content="{Binding Path=OptionName}" IsChecked="{Binding Path=Checked,UpdateSourceTrigger=PropertyChanged}" Margin="0,5,0,0"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Anuluj" HorizontalAlignment="Left" Margin="258,325,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+    </Grid>
+</Window>
